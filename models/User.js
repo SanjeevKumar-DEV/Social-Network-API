@@ -6,15 +6,18 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: [true, 'Please Enter Your Name'],
       unique: true,
       trim: true,
     },
     email: {
       type: String,
-      required: true,
-      unique: true
-    },
+      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+          'Enter valid Email address.'],
+      required: [true, 'Please enter Email Address'],
+      unique: true,
+      lowercase: true,
+  },
     // user having multiple thoughts
     thoughts: [
       {
