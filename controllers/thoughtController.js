@@ -65,7 +65,7 @@ const thoughtController = {
       });
   },
   // delete a thought
-  deleteThought(req, res) {
+  removeThought(req, res) {
     Thought.findOneAndRemove({ _id: req.params.thoughtId })
       .then((data) => {
         if (!data) {
@@ -85,6 +85,34 @@ const thoughtController = {
           return res.status(404).json({ message: 'Thought deleted but no user with this thought id!' });
         }
         res.json({ message: 'Thought deleted' });
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
+  // Add reaction
+  addReaction(req, res) {
+    Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $addToSet: { reactions: req.body } }, { runValidators: true, new: true })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'This thought does not exist' });
+        }
+        res.json(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
+  // Remove reaction
+  removeReaction(req, res) {
+    Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: { reactionId: req.params.reactionId } } }, { runValidators: true, new: true })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'This thought does not exist' });
+        }
+        res.json(data);
       })
       .catch((error) => {
         console.log(error);
