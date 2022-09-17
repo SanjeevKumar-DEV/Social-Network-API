@@ -50,6 +50,20 @@ const thoughtController = {
         res.status(500).json(error);
       });
   },
+  // update an existing thought
+  updateThought(req, res) {
+    Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, { runValidators: true, new: true })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'Thought does not exist' });
+        }
+        res.json(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
 };
 
 module.exports = thoughtController;
