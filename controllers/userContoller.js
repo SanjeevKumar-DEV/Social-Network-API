@@ -8,9 +8,9 @@ const userController = {
       .then((data) => {
         res.json(data);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
       });
   },
   // create a new user
@@ -19,9 +19,9 @@ const userController = {
       .then((data) => {
         res.json(data);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
       });
   },
   // get user by id
@@ -34,11 +34,51 @@ const userController = {
         }
         res.json(data);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
       });
     },
+    // update user
+  updateUser(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      {
+        $set: req.body,
+      },
+      {
+        runValidators: true,
+        new: true,
+      }
+    )
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'User not present with this ID.' });
+        }
+        res.json(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
+  // delete user
+  deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'User id not present' });
+        }
+        return Thought.deleteMany({ _id: { $in: data.thoughts } });
+      })
+      .then(() => {
+        res.json({ message: 'User and thoughts deleted' });
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
 };
 
 module.exports = userController;

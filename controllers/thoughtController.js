@@ -8,9 +8,9 @@ const thoughtController = {
         .then((data) => {
           res.json(data);
         })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json(err);
+        .catch((error) => {
+          console.log(error);
+          res.status(500).json(error);
         });
     },
     // create thought
@@ -31,9 +31,9 @@ const thoughtController = {
 
         res.json({ message: 'Thought created!' });
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
       });
   },
 };
