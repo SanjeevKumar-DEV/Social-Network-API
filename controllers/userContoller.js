@@ -94,6 +94,21 @@ const userController = {
         res.status(500).json(error);
       });
   },
+
+  // remove friend from the user
+  removeFriend(req, res) {
+    User.findOneAndUpdate({ _id: req.params.userId }, { $pull: { friends: req.params.friendId } }, { new: true })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'User ID does not exist.' });
+        }
+        res.json(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
 };
 
 module.exports = userController;
