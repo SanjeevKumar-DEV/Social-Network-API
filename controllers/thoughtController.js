@@ -36,6 +36,20 @@ const thoughtController = {
         res.status(500).json(error);
       });
   },
+  // Get single thought
+  getSingleThought(req, res) {
+    Thought.findOne({ _id: req.params.thoughtId })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: 'No thought exist' });
+        }
+        res.json(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
 };
 
 module.exports = thoughtController;
