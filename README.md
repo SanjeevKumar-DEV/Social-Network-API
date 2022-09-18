@@ -1,8 +1,8 @@
 ![Github EULA](assets/Images/Github_logo_black.png)
 # README Generator
 
-[Application Video URL 1  ](https://drive.google.com/file/d/1jPwBuRB2FDgLHR9P9UpDvUee3XBwPRly/view)
-[Application Video URL 1  ](https://drive.google.com/file/d/1Q1-dKIY6HLKycwmEJbT96oecwu50dC0m/view)
+[Application Video URL 1  ](https://drive.google.com/file/d/1makzgewoLSzWyxKANp_zILdd2O-tWAKy/view)
+[Application Video URL 1  ](https://drive.google.com/file/d/16Uq79E5plyNbDWraA9U4hXfvzIaF05o4/view)
 [Repository URL ](https://github.com/SanjeevKumar-DEV/Social-Network-API)
 
 ## Description
