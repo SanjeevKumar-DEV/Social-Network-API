@@ -1,4 +1,4 @@
-const { Thought, User } = require('../models');
+const { Thought, User, Reaction } = require('../models');
 
 const thoughtController = {
     // get thoughts
@@ -119,6 +119,33 @@ const thoughtController = {
         res.status(500).json(error);
       });
   },
+//Remove reaction
+// removeReaction(req, res) {
+//     Reaction.findOneAndRemove({ _id: req.params.reactionId })
+//       .then((data) => {
+//         if (!data) {
+//           return res.status(404).json({ message: 'No Reaction with this id exist' });
+//         }
+
+//         // remove thought id from user
+//         return Thought.findOneAndUpdate(
+//           { reactions: req.params.reactionId },
+//           { $pull: { reactions: req.params.reactionId } },
+//           { new: true }
+//         );
+//       })
+//       .then((data) => {
+//         if (!data) {
+//             // Thought deleted but no associated user existed.
+//           return res.status(404).json({ message: 'Reaction ID deleted but no reaction associated with this thought id!' });
+//         }
+//         res.json({ message: 'Reaction deleted' });
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//         res.status(500).json(error);
+//       });
+//   },
 };
 
 module.exports = thoughtController;
