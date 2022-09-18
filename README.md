@@ -2,7 +2,7 @@
 # README Generator
 
 [Application Video URL 1  ](https://drive.google.com/file/d/1makzgewoLSzWyxKANp_zILdd2O-tWAKy/view)
-[Application Video URL 1  ](https://drive.google.com/file/d/16Uq79E5plyNbDWraA9U4hXfvzIaF05o4/view)
+[Application Video URL 2  ](https://drive.google.com/file/d/16Uq79E5plyNbDWraA9U4hXfvzIaF05o4/view)
 [Repository URL ](https://github.com/SanjeevKumar-DEV/Social-Network-API)
 
 ## Description
